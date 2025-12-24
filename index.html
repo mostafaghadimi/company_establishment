@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>راهنمای ثبت شرکت سهامی خاص</title>
+    <link rel="stylesheet" href="./assets/css/vazirmatn.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+            line-height: 1.8;
+            background-color: #f5f5f5;
+        }
+        
+        .markdown-body {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+
+        .markdown-body h1 {
+            font-weight: 700;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .markdown-body h2 {
+            font-weight: 600;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .markdown-body h3 {
+            font-weight: 500;
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .markdown-body h4 {
+            font-weight: 500;
+            color: #666;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .markdown-body p {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .markdown-body code {
+            font-family: 'Vazirmatn', 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            border: 1px solid #e0e0e0;
+        }
+
+        .markdown-body pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 20px 0;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .markdown-body pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .markdown-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .markdown-body th, 
+        .markdown-body td {
+            border: 1px solid #ddd;
+            padding: 14px;
+            text-align: right;
+        }
+
+        .markdown-body th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+
+        .markdown-body tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .markdown-body tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .markdown-body a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .markdown-body a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .markdown-body ul, 
+        .markdown-body ol {
+            margin: 20px 0;
+            padding-right: 30px;
+        }
+
+        .markdown-body li {
+            margin-bottom: 10px;
+        }
+
+        .markdown-body hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 40px 0;
+        }
+
+        .markdown-body blockquote {
+            border-right: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+            font-style: italic;
+        }
+
+        .markdown-body strong {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .markdown-body em {
+            font-style: italic;
+            color: #555;
+        }
+
+        /* Special styling for emojis in headings */
+        .markdown-body h2::before,
+        .markdown-body h3::before {
+            margin-left: 10px;
+        }
+
+        /* Loading state */
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            color: #999;
+            font-size: 1.2em;
+        }
+
+        /* Error state */
+        .error {
+            text-align: center;
+            padding: 100px 20px;
+            color: #e74c3c;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .markdown-body {
+                padding: 20px 15px;
+            }
+
+            .markdown-body h1 {
+                font-size: 1.8em;
+            }
+
+            .markdown-body h2 {
+                font-size: 1.5em;
+            }
+
+            .markdown-body h3 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="markdown-body" id="content">
+        <div class="loading">در حال بارگذاری...</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // بارگذاری و نمایش محتوای README.md
+        fetch('./README.md')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('خطا در بارگذاری فایل');
+                }
+                return response.text();
+            })
+            .then(text => {
+                // حذف تگ‌های HTML اضافی از ابتدا و انتهای فایل
+                text = text.replace(/<link[^>]*>/g, '');
+                text = text.replace(/<\/?div[^>]*>/g, '');
+                text = text.trim();
+                
+                // تبدیل Markdown به HTML
+                marked.setOptions({
+                    breaks: true,
+                    gfm: true,
+                    headerIds: true,
+                    mangle: false
+                });
+                
+                const html = marked.parse(text);
+                document.getElementById('content').innerHTML = html;
+                
+                // اضافه کردن smooth scroll برای لینک‌های داخلی
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+            })
+            .catch(error => {
+                document.getElementById('content').innerHTML = 
+                    '<div class="error">⚠️ خطا در بارگذاری محتوا<br><small>' + error.message + '</small></div>';
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>
